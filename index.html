@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<title>“Is This AI?” — verdict on the brand idea</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='22' fill='%230a0a0b'/><text y='72' x='50' text-anchor='middle' font-size='64' font-family='Georgia,serif' font-weight='700' fill='%23ffb020'>?</text></svg>">
+<style>
+*,*::before,*::after{box-sizing:border-box}
+:root{
+  --bg:#0a0a0b; --panel:#131316; --panel2:#1a1a1f; --line:#2a2a31;
+  --ink:#f4f2ee; --dim:#a8a5af; --dimmer:#918e99;
+  --amber:#ffb020; --red:#ff5a4d; --green:#6ee787; --blue:#6ba8ff;
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+html{-webkit-text-size-adjust:100%}
+body{margin:0;background:var(--bg);color:var(--ink);
+  font:400 17px/1.62 -apple-system,BlinkMacSystemFont,"Segoe UI",Inter,Helvetica,Arial,sans-serif;
+  overflow-x:hidden}
+.wrap{max-width:860px;margin:0 auto;padding:0 22px}
+a{color:var(--blue)}
+h1,h2,h3{line-height:1.12;letter-spacing:-.022em;margin:0}
+code,.mono{font-family:var(--mono)}
+
+/* ---------- masthead ---------- */
+header{border-bottom:1px solid var(--line);padding:54px 0 44px;background:
+  radial-gradient(900px 320px at 50% -80px,rgba(255,176,32,.10),transparent 70%)}
+.kicker{font:600 11px/1 var(--mono);letter-spacing:.20em;text-transform:uppercase;color:var(--amber);margin-bottom:20px}
+h1{font-size:clamp(38px,7.2vw,68px);font-weight:800}
+h1 .q{color:var(--amber)}
+.sub{color:var(--dim);font-size:19px;margin-top:20px;max-width:60ch}
+.meta{margin-top:26px;font:500 12px/1.7 var(--mono);color:var(--dimmer)}
+
+/* ---------- signature: the frame ---------- */
+.figure{margin:0;padding:44px 0 8px}
+.frame{position:relative;aspect-ratio:16/10;border-radius:14px;overflow:hidden;
+  background:
+   linear-gradient(215deg,#20242e 0%,#161a22 45%,#0f1116 100%);
+  border:1px solid var(--line);display:grid;place-items:center}
+.frame::before{content:"";position:absolute;inset:0;
+  background:repeating-linear-gradient(0deg,rgba(255,255,255,.028) 0 1px,transparent 1px 3px)}
+.frame::after{content:"";position:absolute;inset:0;
+  background:radial-gradient(60% 60% at 30% 25%,rgba(255,255,255,.09),transparent 65%)}
+.overlaytext{position:relative;z-index:2;font-weight:800;letter-spacing:-.03em;
+  font-size:clamp(30px,7vw,62px);color:#fff;text-align:center;
+  text-shadow:0 2px 20px rgba(0,0,0,.75),0 1px 3px rgba(0,0,0,.9)}
+.overlaysub{position:relative;z-index:2;margin-top:12px;font:600 13px/1 var(--mono);
+  color:rgba(255,255,255,.72);text-align:center;letter-spacing:.06em}
+.framecap{position:absolute;left:14px;right:14px;bottom:13px;z-index:3;
+  display:flex;align-items:center;gap:9px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:7px;background:rgba(0,0,0,.72);
+  backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,.22);border-radius:999px;
+  padding:6px 12px 6px 9px;font:600 12.5px/1 -apple-system,sans-serif;color:#fff}
+.badge svg{flex:none}
+.handle{font:600 12.5px/1 var(--mono);color:rgba(255,255,255,.62)}
+figcaption{margin-top:16px;color:var(--dim);font-size:15.5px;border-left:2px solid var(--amber);
+  padding-left:14px}
+figcaption b{color:var(--ink)}
+
+/* ---------- verdict ---------- */
+.verdict{margin:46px 0 10px;border:1px solid var(--line);border-radius:14px;overflow:hidden;background:var(--panel)}
+.vhead{padding:15px 22px;background:linear-gradient(90deg,rgba(110,231,135,.14),transparent);
+  border-bottom:1px solid var(--line);font:700 12px/1 var(--mono);letter-spacing:.18em;
+  text-transform:uppercase;color:var(--green)}
+.vbody{padding:26px 22px 28px}
+.vbody h2{font-size:clamp(23px,4.2vw,30px);font-weight:750;margin-bottom:14px}
+.vbody p{margin:0 0 14px;color:#dcd9d3}
+.vbody p:last-child{margin-bottom:0}
+
+/* ---------- sections ---------- */
+section{padding:52px 0;border-top:1px solid var(--line)}
+.num{font:700 12px/1 var(--mono);letter-spacing:.18em;color:var(--dimmer);margin-bottom:14px}
+h2{font-size:clamp(25px,4.6vw,34px);font-weight:750}
+h2 .tag{display:inline-block;vertical-align:middle;margin-left:10px;font:700 10.5px/1 var(--mono);
+  letter-spacing:.14em;padding:5px 8px;border-radius:5px;text-transform:uppercase;transform:translateY(-3px)}
+.t-block{background:rgba(255,90,77,.14);color:var(--red);border:1px solid rgba(255,90,77,.32)}
+.t-warn{background:rgba(255,176,32,.13);color:var(--amber);border:1px solid rgba(255,176,32,.3)}
+.t-go{background:rgba(110,231,135,.13);color:var(--green);border:1px solid rgba(110,231,135,.3)}
+section p{margin:16px 0;color:#d6d3ce}
+.lede{font-size:19px;color:var(--ink) !important}
+
+/* quote blocks */
+.q{margin:20px 0;background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--red);
+  border-radius:0 10px 10px 0;padding:16px 18px}
+.q.amber{border-left-color:var(--amber)} .q.green{border-left-color:var(--green)}
+.q .txt{font-size:16px;color:#e8e5e0}
+.q .txt b{color:#fff;background:rgba(255,90,77,.16);padding:1px 3px;border-radius:3px}
+.q.green .txt b{background:rgba(110,231,135,.16)}
+.q .src{margin-top:11px;font:500 11.5px/1.5 var(--mono);color:var(--dimmer);word-break:break-word}
+
+/* list */
+ul.clean{list-style:none;padding:0;margin:20px 0}
+ul.clean li{position:relative;padding:11px 0 11px 30px;border-bottom:1px solid var(--line);color:#d6d3ce}
+ul.clean li:last-child{border-bottom:0}
+ul.clean li::before{content:"";position:absolute;left:6px;top:20px;width:7px;height:7px;
+  border-radius:50%;background:var(--dimmer)}
+ul.clean li.no::before{background:var(--red)} ul.clean li.yes::before{background:var(--green)}
+ul.clean li.warn::before{background:var(--amber)}
+ul.clean b{color:var(--ink)}
+
+/* before/after */
+.ba{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin:26px 0}
+.ba>div{border:1px solid var(--line);border-radius:12px;padding:18px;background:var(--panel)}
+.ba .h{font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;margin-bottom:14px}
+.ba .bad .h{color:var(--red)} .ba .good .h{color:var(--green)}
+.ba .good{background:linear-gradient(180deg,rgba(110,231,135,.07),var(--panel))}
+.ba p{margin:0 0 10px;font-size:15.5px}
+.ba p:last-child{margin:0}
+.beat{font:600 13px/1.5 var(--mono);color:var(--dim);padding:7px 0;border-bottom:1px dashed var(--line)}
+.beat:last-of-type{border-bottom:0}
+.beat span{color:var(--ink)}
+
+/* table */
+.tbl{width:100%;border-collapse:collapse;margin:24px 0;font-size:15px}
+.tbl th{text-align:left;font:700 11px/1 var(--mono);letter-spacing:.14em;text-transform:uppercase;
+  color:var(--dimmer);padding:0 12px 12px 0;border-bottom:1px solid var(--line)}
+.tbl td{padding:13px 12px 13px 0;border-bottom:1px solid var(--line);vertical-align:top;color:#d6d3ce}
+.tbl td:first-child{color:var(--ink);font-weight:600;white-space:nowrap}
+.pill{display:inline-block;font:700 10.5px/1 var(--mono);padding:5px 7px;border-radius:5px;letter-spacing:.08em}
+.p-no{background:rgba(255,90,77,.14);color:var(--red)} .p-ok{background:rgba(110,231,135,.13);color:var(--green)}
+.p-mid{background:rgba(255,176,32,.13);color:var(--amber)}
+.p-unk{background:rgba(157,154,164,.14);color:var(--dim)}
+.scroller{overflow-x:auto;-webkit-overflow-scrolling:touch}
+
+/* callout */
+.note{margin:24px 0;padding:18px 20px;border-radius:12px;background:var(--panel2);
+  border:1px solid var(--line)}
+.note .h{font:700 11px/1 var(--mono);letter-spacing:.16em;text-transform:uppercase;
+  color:var(--amber);margin-bottom:11px}
+.note p{margin:0 0 10px} .note p:last-child{margin:0}
+.note.grey .h{color:var(--dim)}
+
+footer{border-top:1px solid var(--line);padding:40px 0 70px;color:var(--dimmer);font-size:14px}
+footer .mono{font-size:12.5px;line-height:1.9}
+
+@media(max-width:620px){
+  body{font-size:16px}
+  .ba{grid-template-columns:1fr}
+  section{padding:42px 0}
+  .framecap{left:10px;right:10px;bottom:10px}
+  .badge{font-size:11.5px;padding:5px 10px 5px 8px}
+}
+@media(prefers-reduced-motion:no-preference){
+  .frame{transition:transform .4s ease}
+}
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="kicker">Deep research · verdict</div>
+    <h1>“Is This AI<span class="q">?</span>”</h1>
+    <p class="sub">The hook is good and the instinct is right. But the poll is the one thing
+      every platform has written a rule against — and the platform prints the answer
+      on your own video before the viewer can guess.</p>
+    <div class="meta">
+      2026-08-05 · verdict: <span style="color:var(--green)">BUILD IT — with the question changed from a poll to a reveal</span><br>
+      4 of 8 research agents died on a session limit; the unverified gaps are listed at the bottom, unfilled.
+    </div>
+  </div>
+</header>
+
+<div class="wrap">
+
+  <figure class="figure">
+    <div class="frame">
+      <div>
+        <div class="overlaytext">Is this AI?</div>
+        <div class="overlaysub">👇 COMMENT YOUR GUESS</div>
+      </div>
+      <div class="framecap">
+        <span class="badge">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3v3M12 18v3M3 12h3M18 12h3M5.6 5.6l2.1 2.1M16.3 16.3l2.1 2.1M18.4 5.6l-2.1 2.1M7.7 16.3l-2.1 2.1"/><circle cx="12" cy="12" r="3.2"/></svg>
+          AI-generated
+        </span>
+        <span class="handle">@isthisai · 2h</span>
+      </div>
+    </div>
+    <figcaption>This is the whole problem in one frame. Your overlay asks the question;
+      the platform's own label answers it <b>eight pixels below</b>, and on TikTok that label
+      <b>cannot be removed after posting</b>. Ambiguity is not something you get to own — it is
+      the exact property both the platforms and the law spent 2026 deleting.</figcaption>
+  </figure>
+
+  <div class="verdict">
+    <div class="vhead">The call</div>
+    <div class="vbody">
+      <h2>Keep the name. Kill the poll. Ship the reveal.</h2>
+      <p>“Is this AI?” as a <em>question you leave hanging</em> is a format Meta lists by name as
+        unmonetizable, on three separate grounds, in the exact programme you already earn from.
+        It also depends on an ambiguity the platform destroys with a badge and the EU now
+        requires you to destroy yourself.</p>
+      <p>“Is this AI?” as a <em>question you answer in the same clip</em> — hook for three seconds,
+        then show the tell: the hands, the physics, the reflection, the melting text, the audio
+        seam — is the same hook, keeps every argument in the comments, and is the one shape that
+        clears Meta's, TikTok's and YouTube's originality rules simultaneously. It also walks
+        straight into a <b>$2M TikTok fund</b> that is paying for precisely this content.</p>
+      <p>One hard constraint before anything ships: <b>MiniMax H3 output cannot legally carry a
+        global brand.</b> Design on H3, render the winners on Wan 2.2.</p>
+    </div>
+  </div>
+
+  <section>
+    <div class="num">FINDING 01</div>
+    <h2>The platform answers your question<span class="tag t-block">structural</span></h2>
+    <p class="lede">The premise is that the viewer can't tell. Every major platform now tells them,
+      automatically, using metadata you don't control.</p>
+    <div class="q">
+      <div class="txt">“Our new label… will appear to viewers as a <b>label below your caption in the
+        video</b> when they watch it.” — and: “<b>Can I edit or remove the label after posting your
+        content? No</b>, you cannot edit or remove the label after posting your video at this time.”</div>
+      <div class="src">tiktok.com/creator-academy/article/ai-generated-content-label · published 2026-04-30</div>
+    </div>
+    <p>TikTok reads <span class="mono">C2PA</span> Content Credentials and, in its own words,
+      “invisible watermarks… that only we can read”. So the label is not a choice you make —
+      it is a detection you receive. And the alternative is worse:</p>
+    <div class="q">
+      <div class="txt">“TikTok may <b>take down AI-generated content that's not labeled</b>.”
+        Unlabelled realistic AIGC is <b>ineligible for the For You feed</b> — and
+        “content ineligible for the For You feed will not be eligible for the Creator Rewards Program.”</div>
+      <div class="src">TikTok Community Guidelines (AIGC) + creator-academy/article/creator-rewards-program</div>
+    </div>
+    <div class="note">
+      <div class="h">The one genuinely good piece of news in this section</div>
+      <p>Carrying the label costs you nothing on TikTok, and they say so twice:
+        “Applying the label <b>will not have an impact on the engagement</b> with your content,
+        provided that your content isn't violative and meets our For You feed eligibility standards”
+        and “Content will not be demoted or restricted solely because the AI-generated content
+        setting is enabled.”</p>
+      <p>So the label is not a punishment. It is simply <em>an answer key stapled to your quiz</em>.
+        Which is fatal to a guessing game and completely harmless to a teaching one.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">FINDING 02</div>
+    <h2>Meta names your exact format<span class="tag t-block">blocks the money</span></h2>
+    <p class="lede">This is the finding that decides it. Your proven earner is Facebook Content
+      Monetization. Its policy has a “prohibited formats” list, and the format you described is on it —
+      close to word for word.</p>
+    <div class="q">
+      <div class="txt"><b>Static image polls</b> — “Content posted for the sole purpose of increasing
+        engagement by <b>asking people to react to questions posed by the content</b>.”<br><br>
+        <b>Text montages</b> — “Content that primarily displays still or moving images
+        <b>with overlaid text</b>.”<br><br>
+        <b>Engagement bait</b> — “Content that incentivizes people to click a link or
+        <b>respond to a post through likes, comments or shares</b>.”</div>
+      <div class="src">facebook.com/business/help/1348682518563619 — Content Monetization Policies, prohibited formats + prohibited behaviors</div>
+    </div>
+    <p>And separately, the overlay itself is named as <em>not enough</em> to make content original:</p>
+    <div class="q">
+      <div class="txt">Minor editorialization — insufficient: “<b>Adding only an on-screen text
+        caption or title</b>” · “Simply describing (in text, on-screen, or voiceover) what happens
+        in a video with no other meaningful additions” · “Basic compilations that involve splicing
+        third-party clips together without adding your own narrative or new information”.</div>
+      <div class="src">facebook.com/business/help/262834734651607 — Original content guidelines on Facebook</div>
+    </div>
+    <p>Four independent axes, each of which blocks monetisation on its own. Meta's own framing line
+      is <span class="mono">“content suitable for Facebook in general is not necessarily appropriate
+      for monetization.”</span></p>
+    <div class="note">
+      <div class="h">Meta writes down the way through, too</div>
+      <p>Qualifying content includes “Remixes or overlays that feature <b>your own on-screen presence
+        as the focus</b> of the video, and also <b>add new information, commentary, or storyline
+        improvements</b> beyond simply narrating what happens, making facial expressions, or watching
+        along.” That sentence is the entire recommendation in Finding 06.</p>
+      <p>⚠ Separately: FCM is still <b>invite-only</b> with no published rate. A brand-new page
+        cannot enrol; the only published route in is Creator Fast Track at <b>100k+ followers on
+        IG/TikTok/YouTube</b>. So Facebook is a destination for this brand, never its starting line.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">FINDING 03</div>
+    <h2>H3 output can't carry a global brand<span class="tag t-warn">licence</span></h2>
+    <p class="lede">This one comes from our own files, and it is the most concrete constraint on the desk.</p>
+    <div class="q amber">
+      <div class="txt">MiniMax H3 Community License §V.4 — you may not “use, reproduce, modify,
+        <b>distribute, or display</b> the MiniMax H3 Works <b>or any of their Outputs</b>… outside the
+        Applicable Territory.” Applicable Territory <b>excludes the US, EU, UK and South Korea</b>.</div>
+      <div class="src">MiniMaxAI/MiniMax-H3/LICENSE, read from the raw file 2026-08-04</div>
+    </div>
+    <p>A social brand publishes to all four by default. There is no “post it only in India” setting
+      on a TikTok account. You already accepted India-only for H3 output on 4 Aug — that call holds,
+      and it means <b>H3 is the design lab, not the printing press</b>.</p>
+    <div class="scroller"><table class="tbl">
+      <tr><th>Engine</th><th>Territory for outputs</th><th>Audio</th><th>Role here</th></tr>
+      <tr><td>MiniMax H3</td><td><span class="pill p-no">EXCLUDES US/EU/UK/KR</span></td>
+        <td>native, one pass</td><td>Prove the clip. Never the published file.</td></tr>
+      <tr><td>Wan 2.2 TI2V-5B</td><td><span class="pill p-ok">NO RESTRICTION</span> genuine Apache 2.0, verified from LICENSE.txt</td>
+        <td>silent — add audio</td><td><b>The production engine for this brand.</b></td></tr>
+      <tr><td>HunyuanVideo 1.5</td><td><span class="pill p-mid">excludes EU/UK/KR · US ok</span></td>
+        <td>silent</td><td>Fallback only. Worse licence than Wan for no gain.</td></tr>
+    </table></div>
+    <p>Wan's model card is explicit: <span class="mono">“We claim no rights over the your generated
+      contents.”</span> Workflow stays the same — every prompt we write is engine-agnostic, only the
+      graph JSON changes.</p>
+  </section>
+
+  <section>
+    <div class="num">FINDING 04</div>
+    <h2>The law arrived three days ago<span class="tag t-warn">timing</span></h2>
+    <p class="lede">EU AI Act Article 50 transparency obligations started applying on
+      <b>2 August 2026</b>. You are proposing to build a brand on ambiguity in the same week
+      ambiguity became a disclosure offence.</p>
+    <div class="q amber">
+      <div class="txt">“<b>Deployers</b> of an AI system that generates or manipulates image, audio or
+        video content constituting a deep fake, shall <b>disclose that the content has been
+        artificially generated or manipulated</b>.” Providers “shall ensure that the outputs…
+        are <b>marked in a machine-readable format</b> and detectable as artificially generated.”</div>
+      <div class="src">EU AI Act, Article 50 — obligations applicable from 2026-08-02</div>
+    </div>
+    <p>The deployer is the one posting. Note the shape of the carve-out, because it is the most
+      useful sentence in the whole Act for you:</p>
+    <div class="q green">
+      <div class="txt">For “artistic, creative, satirical, fictional” work the obligation is limited to
+        “disclosure of the existence of such generated or manipulated content <b>in an appropriate
+        manner that does not hamper the display or enjoyment</b>”.</div>
+      <div class="src">EU AI Act, Article 50(4)</div>
+    </div>
+    <p>Read that carefully: a <b>reveal at the end of the clip</b> is a disclosure that doesn't hamper
+      enjoyment. A permanently unanswered “is this AI?” is not. The law is pointing at the same
+      format change the monetisation policies are.</p>
+  </section>
+
+  <section>
+    <div class="num">FINDING 05</div>
+    <h2>The platform ranking inverts<span class="tag t-go">useful</span></h2>
+    <p class="lede">The intuitive order for a short-form AI brand is TikTok → Reels → Shorts.
+      On the rules as written, it is the reverse.</p>
+    <div class="scroller"><table class="tbl">
+      <tr><th>Platform</th><th>“Comment your guess” CTA</th><th>Route through originality rules</th><th>Rank</th></tr>
+      <tr><td>YouTube</td><td><span class="pill p-ok">EXPLICITLY OK</span> “It's okay to ask viewers to like, comment, or subscribe”</td>
+        <td>Written escape: creator visible, <b>or</b> explains what they added</td><td><span class="pill p-ok">START HERE</span></td></tr>
+      <tr><td>TikTok</td><td><span class="pill p-mid">NO RULE</span> “engagement bait” appears 0× in the guidelines</td>
+        <td>“Low quality” + “unoriginal” bite on <b>form</b>; 5 ineligible videos / 30 days → disqualified</td><td><span class="pill p-mid">SECOND</span></td></tr>
+      <tr><td>Meta (FB/IG)</td><td><span class="pill p-no">PROHIBITED</span> demoted <em>and</em> unmonetizable</td>
+        <td>On-screen presence + new information — all three gates must clear</td><td><span class="pill p-no">LAST</span></td></tr>
+    </table></div>
+    <p>YouTube's live risk section is <span class="mono">“Generic or Repetitive Content”</span> —
+      it catches templated mass-production, not AI as such. Nothing on any of these three platforms
+      bans AI content. All three ban <b>unoriginal</b> content. AI is never the trigger; sameness is.</p>
+    <div class="note">
+      <div class="h">TikTok's 5-strike tripwire is the real operational risk</div>
+      <p>“If your account has <b>5 or more ineligible videos in the past 30 days</b>, it may be
+        disqualified”, and 5 total account violations makes you <b>permanently</b> ineligible for
+        the rewards programme. For a format that produces several borderline clips a week, that is
+        not a tail risk — it's a schedule.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">FINDING 06 · THE RECOMMENDATION</div>
+    <h2>Turn the poll into a reveal<span class="tag t-go">do this</span></h2>
+    <p class="lede">One change to the format. It keeps 100% of the hook, keeps the argument in the
+      comments, and clears every gate above at once.</p>
+    <div class="ba">
+      <div class="bad">
+        <div class="h">✕ What you described</div>
+        <p>Clip runs. Overlay: <b>“Is this AI? 👇 comment your guess”</b>. No answer, ever.</p>
+        <p>Meta: prohibited format + engagement bait + minor editorialization.<br>
+          TikTok: label spoils it; “low quality / unoriginal” exposure.<br>
+          YouTube: templated, no added value.<br>
+          EU: undisclosed deepfake.</p>
+      </div>
+      <div class="good">
+        <div class="h">✓ Same hook, different second half</div>
+        <p>Clip runs. Overlay: <b>“Is this AI?”</b> — hold 3 seconds. Then <b>you answer it and show
+          the tell</b>: the sixth finger, the physics that doesn't settle, the reflection that
+          doesn't match, the text that melts, the audio seam.</p>
+        <p>The comments now argue “I caught it in 2 seconds” vs “no chance” — a <em>stronger</em>
+          fight than a coin flip, because people defend their own eye.</p>
+      </div>
+    </div>
+    <p>What that second half is, in each rulebook's own words:</p>
+    <div class="beat">Meta → <span>“add new information, commentary, or storyline improvements”</span> = the qualifying route, verbatim</div>
+    <div class="beat">YouTube → <span>“explains how the creator added to the content”</span> = the reused-content escape, verbatim</div>
+    <div class="beat">TikTok → <span>originality is a term in the payout formula</span>; the analysis is your own input, not spliced clips</div>
+    <div class="beat">EU AI Act → <span>“disclosure… that does not hamper the display or enjoyment”</span> = a reveal, exactly</div>
+    <div class="beat">The platform's AI badge → <span>stops being a spoiler and becomes the answer key</span>, arriving after your reveal</div>
+    <div class="note" style="border-color:rgba(110,231,135,.3)">
+      <div class="h" style="color:var(--green)">And there is a named buyer for this framing</div>
+      <p>TikTok is funding it: a <b>$2M AI literacy fund</b> for creators making For You feed content
+        that “teaches people about AI literacy and safety” (TikTok Newsroom, 19 Nov 2025). That is the
+        first hard commercial signal in this entire research pass, and it points at
+        <em>“Is this AI? — here's how to tell”</em>, not at <em>“Is this AI? — you'll never know”</em>.</p>
+    </div>
+  </section>
+
+  <section>
+    <div class="num">FINDING 07</div>
+    <h2>Costs you should price in<span class="tag t-warn">risks</span></h2>
+    <ul class="clean">
+      <li class="warn"><b>Audiences are getting a dial to see less of you.</b> TikTok is testing an
+        AI-content control in “Manage topics” so viewers can choose how much AIGC they see. A brand
+        that self-declares as AI opts into being filtered. The literacy framing partly escapes this —
+        it is content <em>about</em> AI, not only content <em>made of</em> AI.</li>
+      <li class="warn"><b>“Questionable from the beginning” has a shelf life.</b> The moment your
+        audience knows the account is AI, the question stops being a question. The reveal format is
+        the version that survives that transition, because being taught a tell doesn't get old the
+        way a coin flip does.</li>
+      <li class="no"><b>The name space is taken.</b> isthisai.com, isthisaiornot.com, realorai.com,
+        isitai.com and aiornot.com are <b>all registered</b> (RDAP, checked today). On X,
+        <span class="mono">@isthisai</span> and <span class="mono">@isitai</span> resolve;
+        <span class="mono">@isthisai_</span>, <span class="mono">@isthisaiornot</span> and
+        <span class="mono">@realorai</span> return 404. ⚠ TikTok, Instagram and YouTube handle checks
+        were <b>inconclusive</b> from this box — they return 200/302 for every string, taken or not.
+        Those need a real browser before you commit to a name.</li>
+      <li class="no"><b>“AI or Not” is already a live AI-detection product.</b> Naming collision risk —
+        <span class="mono">unverified, the agent covering it died</span>.</li>
+      <li class="warn"><b>One page, one hook, forever.</b> A single-format account has no second act.
+        Worth deciding up front whether “Is This AI?” is the brand or the first series inside a
+        broader AI-literacy brand that can outlive the gimmick.</li>
+    </ul>
+  </section>
+
+  <section>
+    <div class="num">HONESTY</div>
+    <h2>What I could not verify</h2>
+    <p>Four of eight research agents were killed by a session limit mid-run. These gaps are real
+      and I have not filled them with guesses:</p>
+    <ul class="clean">
+      <li class="no"><b>Precedent accounts and their actual numbers.</b> This is the biggest hole.
+        The format already exists — “real or AI”, “spot the AI”, guess-the-AI accounts — and I have
+        <b>no verified data on whether they are growing or already burnt out</b>, or on what a
+        typical view count looks like. Everything above is a rules analysis; it does not tell you
+        whether the audience still cares. This is worth re-running first.</li>
+      <li class="no"><b>Facebook CM payout rates</b> for this content type, and whether Meta reduces
+        distribution of AI-labelled content the way it says it doesn't on TikTok.</li>
+      <li class="no"><b>Trademark search</b> on “IS THIS AI” / “AI OR NOT” / “REAL OR AI”.</li>
+      <li class="no"><b>US state law</b> (California AB 3211/AB 853) and India's IT-rules position on
+        synthetic-media labelling in 2026.</li>
+    </ul>
+    <div class="note grey">
+      <div class="h">Method</div>
+      <p>Every policy quotation above is from the platform's own page or the raw licence/legal text,
+        dated where the source carries a date. Meta's help centre is client-rendered and returns a
+        login shell to any non-browser fetch, so those quotes come from timestamped Wayback captures.
+        Domain availability is RDAP; handle probes are raw HTTP and are reported as inconclusive
+        wherever the platform served a shell.</p>
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="wrap">
+    <div class="mono">
+      is-this-ai · deep research · 2026-08-05<br>
+      verdict: build it as a reveal, not a poll · start on YouTube · render on Wan 2.2, never ship H3 output<br>
+      nothing built · no accounts created · no domains bought · $0 spent
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
